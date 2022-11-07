@@ -3,6 +3,7 @@ work/*
 ex_input/*
 ex_output/*
 private_resources/*
+ex_sub_config.yaml
 .nextflow
 .nextflow.log*
 nextflow-report.html
