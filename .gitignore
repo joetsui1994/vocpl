@@ -1,0 +1,10 @@
+nextflow
+work/*
+ex_input/*
+ex_output/*
+private_resources/*
+.nextflow
+.nextflow.log*
+nextflow-report.html
+nextflow.html
+Dockerfile

@@ -1,0 +1,43 @@
+---
+# global params
+version: false
+out_dir: "/Users/joetsui/Documents/vocpl/ex_output"
+master_fasta: "/Users/joetsui/Documents/vocpl/ex_input/beta.fasta"
+master_metadata: "/Users/joetsui/Documents/vocpl/ex_input/beta.metadata.tsv"
+n_iter: 2
+seeds_file: "/Users/joetsui/Documents/vocpl/ex_input/seeds.txt"
+# global sequences subsampling
+# nextalign params
+nextalign:
+  stop: false
+  in_dir: ""
+  reference: "/Users/joetsui/Documents/vocpl/resources/nov_sars-cov-2/reference.fasta"
+  genemap: "/Users/joetsui/Documents/vocpl/resources/nov_sars-cov-2/genemap.gff"
+  genes: "E,M,N,ORF1a,ORF1b,ORF3a,ORF6,ORF7a,ORF7b,ORF8,ORF9b,S"
+# iqtree is used in tree estimation by default
+ml_tree:
+  method: "iqtree"
+  outgroup_fasta: ""
+  stop: false
+  fasttree:
+    gtr: true
+    boot: 0
+    flags: ""
+  iqtree:
+    nt: "AUTO"
+    m: "gtr"
+    ninit: 100
+    me: 0.01
+    b: 0
+    flags: ""
+# params for initial time-calibration (should be consistent with subsequent QC steps by default)
+treetime_init:
+  stop: false
+  clock_rate: 0.0008
+  clock_std_dev: 0.00002
+  reroot: "oldest"
+treetime_iter:
+  stop: false
+  max_iter: 10
+  max_outliers: 100
+  max_outliers_p: 0.2
