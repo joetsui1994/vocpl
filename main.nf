@@ -54,24 +54,4 @@ workflow {
         | ml_tree \
         | time_calibrate \
         | dta
-
-
-        // .treetime1
-        // .treetime2
-        // .convert2newick
-        // .mugration
-        // .extract_changes
-
-
-    // run_nextclade_qc(ch_runs)
-    // usher_build_tree(run_nextclade_qc.out.ch_qc_seqs)
-
-    // usher_build_tree.out.ch_uqc_tree_meta
-    //     .filter { !it[1].usher.stop && it[1].temp_qc_mode == 1 }
-    //     .join(usher_build_tree.out.ch_uqc_seqs_fa) \
-    //     | run_treetime_qc
-
-    // usher_build_tree.out.ch_uqc_tree_meta
-    //     .filter { !it[1].usher.stop && it[1].temp_qc_mode == 2 } \
-    //     | run_chron_qc
 }
