@@ -5,6 +5,7 @@ out_dir: "$PWD/ex_output"
 master_fasta: "$PWD/ex_input/beta.fasta"
 master_metadata: "$PWD/ex_input/beta.metadata.tsv"
 n_iter: 2
+n_random: 50
 seeds_file: "$PWD/ex_input/seeds.txt"
 # global sequences subsampling
 # nextalign params

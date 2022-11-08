@@ -13,7 +13,7 @@ process subsample_ids_metadata {
     
     """
     head -n1 $params.master_metadata > subsample_metadata.tsv
-    shuf -n 200 $params.master_metadata >> subsample_metadata.tsv
+    shuf -n $params.n_random $params.master_metadata >> subsample_metadata.tsv
     tail -n +2 subsample_metadata.tsv | cut -f1 > subsample_ids.tsv
     """
 }
