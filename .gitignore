@@ -8,4 +8,3 @@ ex_sub_config.yaml
 .nextflow.log*
 nextflow-report.html
 nextflow.html
-Dockerfile
