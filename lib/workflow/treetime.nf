@@ -12,6 +12,8 @@ process treetime_init {
     output:
         file "*"
         tuple val(key), path(msa_fasta), path("outliers.tsv"), path("ml_treetime.iter0.nwk"), emit: treetime_iter0
+    when:
+        params.ml_tree.stop != true
 
     """
     treetime \

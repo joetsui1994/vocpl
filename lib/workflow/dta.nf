@@ -11,6 +11,9 @@ process treetime_dta {
     output:
         file "*"
         tuple val(key), path("annotated_tree.nexus"), emit: treetime_dta
+    when:
+        params.treetime_init.stop != true
+
     """
     treetime mugration \
         --tree $ml_treetime_final_nwk \

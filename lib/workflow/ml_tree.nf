@@ -9,6 +9,8 @@ process add_outgroup {
         tuple val(key), path(msa_fasta)
     output:
         tuple val(key), path("aligned.outgroup_added.fasta")
+    when:
+        params.nextalign.stop != true
 
     """
     cat $params.ml_tree.outgroup_fasta $msa_fasta > aligned.outgroup_added.fasta

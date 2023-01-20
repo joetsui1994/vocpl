@@ -7,7 +7,9 @@ process nextalign {
     output:
         file "*"
         tuple val(key), path("nextalign.aligned.fasta"), emit: aligned_fasta
-    
+    when:
+        params.subsampler.stop != true
+
     """
     nextalign run \
         --input-ref=$nextalign_reference \
