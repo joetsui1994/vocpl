@@ -9,12 +9,29 @@ process subsample_ids_metadata {
     input:
         val(key)
     output:
-        tuple val(key), path("subsample_ids.tsv"), path("subsample_metadata.tsv")
+        file "*"
+        tuple val(key), path("output_sequence_ids_${key}.txt"), emit: subsampled_ids
     
     """
-    head -n1 $params.master_metadata > subsample_metadata.tsv
-    shuf -n $params.n_random $params.master_metadata >> subsample_metadata.tsv
-    tail -n +2 subsample_metadata.tsv | cut -f1 > subsample_ids.tsv
+    python3.7 $projectDir/lib/scripts/subsampler_timeseries.py \
+        --metadata $params.master_metadata \
+        --genome-matrix $params.subsampler.genome_matrix \
+        --max-missing $params.subsampler.max_missing \
+        --refgenome-size $params.subsampler.refgenome_size \
+        --keep $params.subsampler.keep_file \
+        --remove $params.subsampler.remove_file \
+        --filter-file $params.subsampler.filter_file \
+        --index-column $params.subsampler.id_column \
+        --geo-column $params.subsampler.geo_column \
+        --date-column $params.subsampler.date_column \
+        --time-unit $params.subsampler.unit \
+        --weekasdate no \
+        --seed $key \
+        --start-date $params.subsampler.start_date \
+        --end-date $params.subsampler.end_date \
+        --sampled-sequences "output_sequence_ids_${key}.txt" \
+        --sampled-metadata "output_metadata_${key}.txt" \
+        --report "output_report_${key}.txt"
     """
 }
 
@@ -36,8 +53,8 @@ workflow subsample {
         ch_seeds
     main:
         ch_seeds \
-            | subsample_ids_metadata \
-            | map { it[0..1] } \
+            | subsample_ids_metadata
+        subsample_ids_metadata.out.subsampled_ids \
             | subsample_alignment
     emit:
         subsample_alignment.out

@@ -7,10 +7,26 @@ master_metadata: "$PWD/ex_input/beta.metadata.tsv"
 n_iter: 2
 n_random: 50
 seeds_file: "$PWD/ex_input/seeds.txt"
-# global sequences subsampling
+# params for sequences subsampling
+subsampler:
+  stop: false
+  genome_matrix: "$PWD/ex_input/subsampling/matrix_genomes_unit_corrected.tsv"
+  case_data: "$PWD/ex_input/subsampling/beta_scaled_global_data.tsv"
+  keep_file: "$PWD/ex_input/subsampling/keep.txt"
+  remove_file: "$PWD/ex_input/subsampling/remove.txt"
+  filter_file: "$PWD/ex_input/subsampling/filters.tsv"
+  id_column: "gisaid_epi_isl"
+  geo_column: "country_exposure"
+  date_column: "date"
+  baseline: 0.005
+  refgenome_size: 1
+  max_missing: 99
+  start_date: "2020-09-01"
+  end_date: "2021-09-01"
+  unit: "week"
 # nextalign params
 nextalign:
-  stop: false
+  stop: true
   in_dir: ""
   reference: "$PWD/resources/nov_sars-cov-2/reference.fasta"
   genemap: "$PWD/resources/nov_sars-cov-2/genemap.gff"
@@ -38,7 +54,5 @@ treetime_init:
   clock_std_dev: 0.00002
   reroot: "oldest"
 treetime_iter:
-  stop: false
   max_iter: 10
   max_outliers: 100
-  max_outliers_p: 0.2
