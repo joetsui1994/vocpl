@@ -9,7 +9,7 @@ FROM python:3.7
 RUN git clone --depth=1 --branch v0.8.5 https://github.com/neherlab/treetime.git \
 	 && cd treetime \
 	 && pip3 install .
-RUN python -m pip install baltic
+RUN python -m pip install baltic epiweeks pycountry_convert Bio pandas
 
 # # Setting the working directory to /tmp
 ENV PATH /usr/local/lib:$PATH
