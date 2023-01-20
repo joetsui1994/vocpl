@@ -68,10 +68,10 @@ workflow subsample {
     take:
         ch_seeds
     main:
-        if (params.seeds_file?.trim()) {
-            subsample_ids = ch_seeds | subsample_ids_metadata
-        } else {
+        if (params.n_random > 0) {
             subsample_ids = ch_seeds | random_subsample_ids_metadata
+        } else {
+            subsample_ids = ch_seeds | subsample_ids_metadata
         }
         subsample_ids.subsampled_ids | subsample_alignment
     emit:
