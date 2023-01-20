@@ -46,7 +46,7 @@ process treetime_iter {
     outliers_n=\$(wc -l $outliers_iter0_tsv | awk '{ print \$1 }')
     cat $outliers_iter0_tsv > all_outliers.tsv
 
-    while [[ \$outliers_n -gt 0 && \$i -lt $params.treetime_iter.max_iter ]]
+    while [[ \$outliers_n -gt 0 && \$outliers_n -lt $params.treetime_iter.max_outliers && \$i -lt $params.treetime_iter.max_iter ]]
     do
         i=\$((i+1))
         treetime \
