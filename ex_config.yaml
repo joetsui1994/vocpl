@@ -11,7 +11,6 @@ seeds_file: "$PWD/ex_input/seeds.txt"
 subsampler:
   stop: false
   genome_matrix: "$PWD/ex_input/subsampling/matrix_genomes_unit_corrected.tsv"
-  case_data: "$PWD/ex_input/subsampling/beta_scaled_global_data.tsv"
   keep_file: "$PWD/ex_input/subsampling/keep.txt"
   remove_file: "$PWD/ex_input/subsampling/remove.txt"
   filter_file: "$PWD/ex_input/subsampling/filters.tsv"
