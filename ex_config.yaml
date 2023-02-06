@@ -17,7 +17,6 @@ subsampler:
   id_column: "gisaid_epi_isl"
   geo_column: "country_exposure"
   date_column: "date"
-  baseline: 0.005
   refgenome_size: 1
   max_missing: 99
   start_date: "2020-09-01"
