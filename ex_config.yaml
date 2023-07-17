@@ -24,7 +24,7 @@ subsampler:
   unit: "week"
 # nextalign params
 nextalign:
-  stop: true
+  stop: false
   reference: "$PWD/resources/nov_sars-cov-2/reference.fasta"
   genemap: "$PWD/resources/nov_sars-cov-2/genemap.gff"
   genes: "E,M,N,ORF1a,ORF1b,ORF3a,ORF6,ORF7a,ORF7b,ORF8,ORF9b,S"
