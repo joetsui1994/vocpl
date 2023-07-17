@@ -1,10 +1,10 @@
 FROM nextstrain/nextalign:latest as nextalign
 FROM evolbioinfo/gotree:latest as gotree
-FROM staphb/iqtree2:latest as iqtree2
+FROM staphb/iqtree2:2.1.2 as iqtree2
 FROM nanozoo/seqkit:latest as seqkit
 
 # Using python3.7 image as a parent image
-FROM python:3.7
+FROM --platform=linux/amd64 python:3.7
 # RUN apt-get update && apt-get install -y extra-runtime-dependencies && rm -rf /var/lib/apt/lists/* 
 RUN git clone --depth=1 --branch v0.8.5 https://github.com/neherlab/treetime.git \
 	 && cd treetime \
